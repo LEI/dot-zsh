@@ -30,12 +30,25 @@ print_user_host() {
     if [[ -n $SSH_TTY ]]; then
       s+='%F{1}'
     else
-      s+='%F{14}'
+      s+='%F{6}'
     fi
     # %M  The full hostname
     # %m  The hostname up to the first dot
     s+='%M '
   fi
+  echo $s
+}
+
+print_git_prompt() {
+  # git rev-parse --show-toplevel
+  s='on '
+  if git diff --no-ext-diff --quiet --exit-code; then
+    s+='%F{1}'
+  else
+    s+='%F{6}'
+  fi
+  s+='branch'
+  s+='%f'
   echo $s
 }
 
@@ -52,19 +65,6 @@ git_dirty() {
   fi
 
   return $?
-}
-
-print_git_prompt() {
-  # git rev-parse --show-toplevel
-  s='on '
-  if git_dirty; then
-    s+='%F{1}'
-  else
-    s+='%F{1}'
-  fi
-  s+='branch'
-  s+='%f'
-  echo $s
 }
 
 precmd () {

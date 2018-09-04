@@ -1,0 +1,20 @@
+---
+role:
+  pkg:
+    # https://github.com/Tarrasch/antigen-hs
+
+    # https://getantibody.github.io/
+    # curl -sL git.io/antibody | sh -s
+    - name: getantibody/tap/antibody
+      os: darwin
+    - name: antibody
+      os: archlinux
+  dir:
+    - .zsh.d
+  link:
+    - "*.zsh:.zsh.d"
+    - "plugins:.zsh.d"
+  line:
+    ".zshrc": "[ -f ~/.zsh.d/init.zsh ] && source ~/.zsh.d/init.zsh"
+  post_install:
+    - antibody bundle < zsh_plugins.txt > ~/.zsh_plugins.sh

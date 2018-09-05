@@ -8,6 +8,8 @@ reload() {
 
 # TODO: ~/.path
 
+alias path='echo $PATH | tr -s ":" "\n"'
+
 export ZSH_DIR=~/.zsh.d
 
 # Load all configuration files but init.zsh

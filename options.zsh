@@ -1,5 +1,27 @@
 #!/bin/zsh
 
+# https://github.com/caarlos0/dotfiles/blob/master/zsh/config.zsh
+
+# fpath=($DOTFILES/functions $fpath)
+
+# autoload -U "$DOTFILES"/functions/*(:t)
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# adds history
+setopt APPEND_HISTORY
+# adds history incrementally and share it across sessions
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+# don't record dupes in history
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+
 # https://github.com/willghatch/zsh-saneopt/blob/master/saneopt.plugin.zsh
 
 # No c-s/c-q output freezing

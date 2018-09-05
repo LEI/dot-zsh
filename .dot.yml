@@ -12,9 +12,13 @@ role:
   dir:
     - .zsh.d
   link:
+    - .zshenv
     - "*.zsh:.zsh.d"
     - "plugins:.zsh.d"
   line:
-    ".zshrc": "[ -f ~/.zsh.d/init.zsh ] && source ~/.zsh.d/init.zsh"
+    ".zshrc": "if [ -f ~/.zsh.d/init.zsh ]; then source ~/.zsh.d/init.zsh; fi"
   post_install:
+    - command: 'echo /usr/local/bin/zsh | sudo tee -a /etc/shells; chsh -s /usr/local/bin/zsh'
+      if: '! fgrep -q "/usr/local/bin/zsh" /etc/shells && [ "$CI" != true ]'
+      os: darwin
     - antibody bundle < zsh_plugins.txt > ~/.zsh_plugins.sh

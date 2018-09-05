@@ -1,6 +1,14 @@
 typeset -U path
 # path=(~/.local/bin /other/things/in/path $path[@])
 
+if hash nvim 2>/dev/null; then
+  EDITOR="nvim"
+else
+  EDITOR="vim"
+fi
+
+VISUAL="$EDITOR" # VEDITOR?
+
 PROMPT_LEAN_SYMBOL='%(!.#.›)'
 PROMPT_LEAN_TMUX='' # used to indicate being in tmux, set to "t ", by default
 PROMPT_LEAN_COLOR1='11' # jobs and VCS info indicator color

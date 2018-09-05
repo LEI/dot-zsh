@@ -1,15 +1,15 @@
 #!/bin/zsh
 
-for dir in {/usr/local/opt/fzf,~/.config/fzf,~/.fzf}; do
-  if [[ "$dir" == "$HOME/.fzf" ]] && [[ -d "$dir/bin" ]]; then
-    pathmunge "$dir/bin" after
-  fi
-  if [[ -d "$dir/shell" ]]; then
-    source "$dir/shell/key-bindings.zsh"
-    source "$dir/shell/completion.zsh"
-    break
-  fi
-done
+# for dir in {/usr/local/opt/fzf,~/.config/fzf,~/.fzf}; do
+#   if [[ "$dir" == "$HOME/.fzf" ]] && [[ -d "$dir/bin" ]]; then
+#     pathmunge "$dir/bin" after
+#   fi
+#   if [[ -d "$dir/shell" ]]; then
+#     source "$dir/shell/key-bindings.zsh"
+#     source "$dir/shell/completion.zsh"
+#     break
+#   fi
+# done
 
 if hash ag 2>/dev/null; then
   export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""' # --nocolor

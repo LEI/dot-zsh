@@ -1,2 +1,7 @@
 # chrissicool/zsh-bash
 lei/lean # fork of miekg/lean
+
+# Must be the last plugin sourced
+# manual installation is recommended
+# https://github.com/zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-syntax-highlighting

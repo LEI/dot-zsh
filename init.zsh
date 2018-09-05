@@ -26,19 +26,6 @@ for file in $ZSH/plugins/*.zsh; do
     hash ${file:r:t} 2>/dev/null && source $file
 done
 
-# autoload -U up-line-or-beginning-search
-# autoload -U down-line-or-beginning-search
-# zle -N up-line-or-beginning-search
-# zle -N down-line-or-beginning-search
-
-# Zle provides functionalities equivalent to ~/.inputrc
-# https://github.com/zsh-users/zsh-history-substring-search
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
-# autoload -U history-search-end
-# zle -N history-beginning-search-backward-end history-search-end
-# bindkey "^[[A" history-beginning-search-backward-end
-
 # Dynamic loading
 #source <(antibody init)
 #antibody bundle < ~/.zsh.d/plugins.txt

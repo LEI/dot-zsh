@@ -2,8 +2,8 @@
 
 # ZSH aliases
 
-alias la="ls -la"
-alias path='echo $PATH | tr -s ":" "\n"'
+aliad reload='source ~/.zshrc'
+aliad reload!='exec "$SHELL" -l'
 
 # More verbose
 alias cp="cp -v"
@@ -19,12 +19,13 @@ alias egrep="egrep --color=auto"
 # Always continue getting partially-downloaded file
 alias wget="wget -c"
 
-# Shortcuts
+# Misc shortcuts
 alias h="history"
 alias hgrep="history | grep"
 alias j="jobs"
 alias l="ls -lF"
 alias la="ls -lAF"
+alias path='echo $PATH | tr -s ":" "\n"'
 
 # Help command
 autoload -Uz run-help

@@ -2,8 +2,8 @@
 
 # ZSH aliases
 
-aliad reload='source ~/.zshrc'
-aliad reload!='exec "$SHELL" -l'
+alias reload='source ~/.zshrc'
+alias reload!='exec "$SHELL" -l'
 
 # More verbose
 alias cp="cp -v"

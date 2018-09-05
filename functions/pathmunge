@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Append or prepend to PATH
+
+if [ ! -d "$1" ]; then
+  # Not a directory
+  return 1
+fi
+case ":$PATH:" in
+  *:"$1":*) return ;;
+esac
+# if [[ $PATH =~ (^|:)$p($|:) ]]; then
+#   # Already in PATH
+#   return
+# fi
+if [ "$2" = "before" ]; then
+  # pathmunge /path/to/dir
+  PATH="$1:$PATH"
+else
+  # pathmunge /path/to/dir after
+  PATH="$PATH:$1"
+fi

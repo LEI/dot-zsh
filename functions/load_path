@@ -1,0 +1,25 @@
+#!/bin/sh
+
+file="$1"
+
+if [ ! -f "$file" ]; then
+  return 1
+fi
+
+while read -r p; do
+  case "$p" in
+    # Skip empty lines
+    "") continue ;;
+    # Ignore comments
+    \#*) continue ;;
+    # Strip end of line comments
+    *\ \#*) p="${p% #*}" ;;
+    # Simulate home expansion
+    \~/*) p="$HOME/${p#\~/}" ;;
+  esac
+  if [ -d "$p" ]; then
+    pathmunge "$p" after
+  else # TODO: indicate line number
+    echo >&2 "$p: invalid directory found in $file"
+  fi
+done <"$file"

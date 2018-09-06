@@ -28,7 +28,7 @@ fi
 typeset -U zsh_files
 zsh_files=($ZSH/*.zsh)
 for file in ${zsh_files:#*/init.zsh}; do
-  source "$file"
+  source $file
 done
 
 # Load plugins files if the command corresponding to its name is available
@@ -36,11 +36,8 @@ for file in $ZSH/plugins/*.zsh; do
     hash ${file:r:t} 2>/dev/null && source $file
 done
 
-# Dynamic loading
-#source <(antibody init)
-#antibody bundle < ~/.zsh.d/plugins.txt
-
 # Static loading of antibody plugins
-source ~/.zsh_plugins.sh
+# antibody bundle < bundles.conf > ~/.zsh.d/bundles.sh
+source $ZSH/bundles.sh
 
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local

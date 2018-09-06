@@ -6,13 +6,23 @@
 export ZSH=~/.zsh.d
 
 # fpath=($ZSH/functions $fpath)
-autoload -Uz $ZSH/functions/*(:r)
+#autoload -Uz $ZSH/functions/*(:r)
 # for func in $ZSH/functions/*.zsh(:r:t); do
 #   autoload -Uz $func
 # done
 
+# Global environment variables
+if [[ -f ~/.exports ]]; then
+  source ~/.exports
+fi
+
 # Append to PATH
-load_path ~/.path
+path=($path $HOME/bin)
+# fpath=($fpath $HOME/bin)
+# autoload -Uz load_path pathmunge
+if [[ -f ~/.path ]]; then
+  load_path ~/.path
+fi
 
 # Load all configuration files but init.zsh
 typeset -U zsh_files

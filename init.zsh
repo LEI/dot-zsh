@@ -17,10 +17,10 @@ if [[ -f ~/.exports ]]; then
 fi
 
 # Append to PATH
-path=($path $HOME/bin)
-# fpath=($fpath $HOME/bin)
-# autoload -Uz load_path pathmunge
+fpath=($fpath $HOME/bin)
+autoload -Uz load_path pathmunge
 if [[ -f ~/.path ]]; then
+  # source "$HOME"/bin/load_path ~/.path
   load_path ~/.path
 fi
 

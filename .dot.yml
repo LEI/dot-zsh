@@ -1,10 +1,16 @@
 ---
+# https://github.com/Tarrasch/antigen-hs
 role:
-  pkg:
-    # https://github.com/Tarrasch/antigen-hs
-
+  install:
     # https://getantibody.github.io/
-    # curl -sL git.io/antibody | sh -s
+    - command: curl -sL git.io/antibody | sh -s
+      if: "! hash antibody"
+      os: debian
+  remove:
+    - command: rm /usr/local/bin/antibody
+      if: test -f /usr/local/bin/antibody
+      os: debian
+  pkg:
     - name: getantibody/tap/antibody
       os: darwin
     - name: antibody

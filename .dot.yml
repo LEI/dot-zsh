@@ -24,8 +24,6 @@ role:
       os: darwin
     # https://getantibody.github.io/
     - antibody bundle < bundles.conf > ~/.zsh.d/bundles.sh
-    - command: |
-        curl -sSL https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh \
-        -o ~/bin/porcelain
-        chmod +x ~/bin/porcelain
-      if: "! hash porcelain && [ ! -x ~/bin/porcelain ]"
+    - url: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
+      dest: $HOME/bin/porcelain
+      mode: 0755

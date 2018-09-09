@@ -12,17 +12,15 @@ export ZSH=~/.zsh.d
 # done
 
 # Global environment variables
-if [[ -f ~/.exports ]]; then
-  source ~/.exports
+if [[ -f ~/.sh_profile ]]; then
+  source ~/.sh_profile
 fi
-
-# Append to PATH
-fpath=($fpath $HOME/bin)
-autoload -Uz load_path pathmunge
-if [[ -f ~/.path ]]; then
-  # source "$HOME"/bin/load_path ~/.path
-  load_path ~/.path
-fi
+# fpath=($fpath $HOME/bin)
+# autoload -Uz load_path pathmunge
+# if [[ -f ~/.path ]]; then
+#   # source "$HOME"/bin/load_path ~/.path
+#   load_path ~/.path
+# fi
 
 # Load all configuration files but init.zsh
 typeset -U zsh_files

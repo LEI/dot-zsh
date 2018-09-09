@@ -10,6 +10,10 @@ role:
     - command: rm /usr/local/bin/antibody
       if: test -f /usr/local/bin/antibody
       os: debian
+  copy:
+    - source: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
+      target: bin/porcelain
+      mode: 0755
   pkg:
     - name: getantibody/tap/antibody
       os: darwin
@@ -30,6 +34,3 @@ role:
       os: darwin
     # https://getantibody.github.io/
     - antibody bundle < bundles.conf > ~/.zsh.d/bundles.sh
-    - url: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
-      dest: $HOME/bin/porcelain
-      mode: 0755

@@ -5,20 +5,20 @@ role:
     # https://getantibody.github.io/
     - command: curl -sL git.io/antibody | sh -s
       if: "! hash antibody"
-      os: debian
+      os: ["!archlinux", "!darwin"]
   remove:
     - command: rm /usr/local/bin/antibody
       if: test -f /usr/local/bin/antibody
-      os: debian
-  copy:
-    - source: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
-      target: bin/porcelain
-      mode: 0755
+      os: ["!archlinux", "!darwin"]
   pkg:
     - name: getantibody/tap/antibody
       os: darwin
     - name: antibody
       os: archlinux
+  copy:
+    - source: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
+      target: bin/porcelain
+      mode: 0755
   dir:
     - .zsh.d
   link:

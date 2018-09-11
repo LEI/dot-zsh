@@ -1,15 +1,14 @@
 ---
 # https://github.com/Tarrasch/antigen-hs
 role:
+  os: ["archlinux", "darwin"]
   install:
     # https://getantibody.github.io/
     - command: curl -sL git.io/antibody | sh -s
       if: "! hash antibody"
-      os: ["!archlinux", "!darwin"]
   remove:
-    - command: rm /usr/local/bin/antibody
-      if: test -f /usr/local/bin/antibody
-      os: ["!archlinux", "!darwin"]
+    - command: rm ${PREFIX:-/usr/local}/bin/antibody
+      if: test -f ${PREFIX:-/usr/local}/bin/antibody
   pkg:
     - name: getantibody/tap/antibody
       os: darwin
@@ -29,8 +28,8 @@ role:
   line:
     ".zshrc": "if [ -f ~/.zsh.d/init.zsh ]; then source ~/.zsh.d/init.zsh; fi"
   post_install:
-    - command: 'echo /usr/local/bin/zsh | sudo tee -a /etc/shells; chsh -s /usr/local/bin/zsh'
-      if: '! fgrep -q "/usr/local/bin/zsh" /etc/shells && [ "$CI" != true ]'
-      os: darwin
+    # - command: 'echo /usr/local/bin/zsh | sudo tee -a /etc/shells; chsh -s /usr/local/bin/zsh'
+    #   if: '! fgrep -q "/usr/local/bin/zsh" /etc/shells && [ "$CI" != true ]'
+    #   os: darwin
     # https://getantibody.github.io/
     - antibody bundle < bundles.conf > ~/.zsh.d/bundles.sh

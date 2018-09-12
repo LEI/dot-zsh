@@ -1,4 +1,5 @@
 ---
+# https://getantibody.github.io/
 # https://github.com/Tarrasch/antigen-hs
 role:
   os: ["archlinux", "darwin"]
@@ -6,15 +7,13 @@ role:
     # https://getantibody.github.io/
     - command: curl -sL git.io/antibody | sh -s
       if: "! hash antibody"
-  remove:
-    - command: rm ${PREFIX:-/usr/local}/bin/antibody
-      if: test -f ${PREFIX:-/usr/local}/bin/antibody
+      os: ["!archlinux", "!darwin"]
   pkg:
-    - name: getantibody/tap/antibody
-      os: darwin
     - name: antibody
       type: yaourt
       os: archlinux
+    - name: getantibody/tap/antibody
+      os: darwin
   copy:
     - source: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
       target: bin/porcelain
@@ -32,5 +31,8 @@ role:
     # - command: 'echo /usr/local/bin/zsh | sudo tee -a /etc/shells; chsh -s /usr/local/bin/zsh'
     #   if: '! fgrep -q "/usr/local/bin/zsh" /etc/shells && [ "$CI" != true ]'
     #   os: darwin
-    # https://getantibody.github.io/
     - antibody bundle < bundles.conf > ~/.zsh.d/bundles.sh
+  post_remove:
+    - command: rm ${PREFIX:-/usr/local}/bin/antibody
+      if: test -f ${PREFIX:-/usr/local}/bin/antibody
+      os: ["!archlinux", "!darwin"]

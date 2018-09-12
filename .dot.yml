@@ -13,6 +13,7 @@ role:
     - name: getantibody/tap/antibody
       os: darwin
     - name: antibody
+      type: yaourt
       os: archlinux
   copy:
     - source: https://raw.githubusercontent.com/LEI/porcelain/master/porcelain.sh
